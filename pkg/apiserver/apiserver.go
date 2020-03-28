@@ -12,7 +12,7 @@ import (
 	"github.com/vaibhavk/petstore-apiserver/pkg/apis/petstore"
 	"github.com/vaibhavk/petstore-apiserver/pkg/apis/petstore/install"
 	customregistry "github.com/vaibhavk/petstore-apiserver/pkg/registry"
-	petstorage "github.com/vaibhavk/petstore-apiserver/pkg/registry/petstore/pet"
+	petstorage "github.com/vaibhavk/petstore-apiserver/pkg/registry/petstore"
 )
 
 var (

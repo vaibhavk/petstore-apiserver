@@ -28,7 +28,7 @@ import (
 	genericoptions "k8s.io/apiserver/pkg/server/options"
 
 	"github.com/vaibhavk/petstore-apiserver/pkg/admission/custominitializer"
-	"github.com/vaibhavk/petstore-apiserver/pkg/apis/restaurant/v1alpha1"
+	"github.com/vaibhavk/petstore-apiserver/pkg/apis/petstore/v1alpha1"
 	"github.com/vaibhavk/petstore-apiserver/pkg/apiserver"
 	clientset "github.com/vaibhavk/petstore-apiserver/pkg/generated/clientset/versioned"
 	informers "github.com/vaibhavk/petstore-apiserver/pkg/generated/informers/externalversions"
@@ -123,22 +123,22 @@ func (o *CustomServerOptions) Config() (*apiserver.Config, error) {
 	return config, nil
 }
 
-// func (o CustomServerOptions) Run(stopCh <-chan struct{}) error {
-// 	config, err := o.Config()
-// 	if err != nil {
-// 		return err
-// 	}
+func (o CustomServerOptions) Run(stopCh <-chan struct{}) error {
+	config, err := o.Config()
+	if err != nil {
+		return err
+	}
 
-// 	server, err := config.Complete().New()
-// 	if err != nil {
-// 		return err
-// 	}
+	server, err := config.Complete().New()
+	if err != nil {
+		return err
+	}
 
-// 	server.GenericAPIServer.AddPostStartHook("start-pizza-apiserver-informers", func(context genericapiserver.PostStartHookContext) error {
-// 		config.GenericConfig.SharedInformerFactory.Start(context.StopCh)
-// 		o.SharedInformerFactory.Start(context.StopCh)
-// 		return nil
-// 	})
+	server.GenericAPIServer.AddPostStartHook("start-petstore-apiserver-informers", func(context genericapiserver.PostStartHookContext) error {
+		config.GenericConfig.SharedInformerFactory.Start(context.StopCh)
+		o.SharedInformerFactory.Start(context.StopCh)
+		return nil
+	})
 
-// 	return server.GenericAPIServer.PrepareRun().Run(stopCh)
-// }
+	return server.GenericAPIServer.PrepareRun().Run(stopCh)
+}

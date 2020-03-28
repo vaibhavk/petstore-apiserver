@@ -5,25 +5,25 @@ import (
 	"k8s.io/apimachinery/pkg/util/validation/field"
 )
 
-// ValidatePizza validates a Pizza.
-func ValidatePizza(f *petstore.Pizza) field.ErrorList {
+// ValidatePetStore validates a PetStore.
+func ValidatePetStore(f *petstore.PetStore) field.ErrorList {
 	allErrs := field.ErrorList{}
 
-	allErrs = append(allErrs, ValidatePizzaSpec(&f.Spec, field.NewPath("spec"))...)
+	allErrs = append(allErrs, ValidatePetStoreSpec(&f.Spec, field.NewPath("spec"))...)
 
 	return allErrs
 }
 
-// ValidatePizzaSpec validates a PizzaSpec.
-func ValidatePizzaSpec(s *petstore.PizzaSpec, fldPath *field.Path) field.ErrorList {
+// ValidatePetStoreSpec validates a PetStoreSpec.
+func ValidatePetStoreSpec(s *petstore.PetStoreSpec, fldPath *field.Path) field.ErrorList {
 	allErrs := field.ErrorList{}
 
-	if len(s.PetLists) == 0 {
+	if len(s.PetList) == 0 {
 		allErrs = append(allErrs, field.Required(fldPath.Child("petlists"), "cannot be empty"))
 	}
-	for i := range s.PetLists {
-		if s.PetLists[i].Quantity <= 0 {
-			allErrs = append(allErrs, field.Invalid(fldPath.Child("petlists").Index(i).Child("quantity"), s.PetLists[i].Quantity, "cannot be negative or zero"))
+	for i := range s.PetList {
+		if s.PetList[i].Quantity <= 0 {
+			allErrs = append(allErrs, field.Invalid(fldPath.Child("petlists").Index(i).Child("quantity"), s.PetList[i].Quantity, "cannot be negative or zero"))
 		}
 	}
 

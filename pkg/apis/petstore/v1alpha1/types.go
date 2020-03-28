@@ -15,7 +15,7 @@ type PetStore struct {
 }
 
 type PetStoreSpec struct {
-	Petlist []Pet `json:"petlist" protobuf:"bytes,1,rep,name=petlist"`
+	PetList []Pet `json:"petlist" protobuf:"bytes,1,rep,name=petlist"`
 }
 
 type Pet struct {

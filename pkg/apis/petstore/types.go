@@ -15,7 +15,6 @@ type PetStore struct {
 }
 
 type PetStoreSpec struct {
-	// toppings is a list of Topping names. They don't have to be unique. Order does not matter.
 	PetList []Pet
 }
 
@@ -23,7 +22,7 @@ type Pet struct {
 	// name is the name of a Topping object .
 	Name string
 	// quantity is the number of how often the topping is put onto the pizza.
-	Quantity int
+	Quantity int64
 }
 
 type PetStoreStatus struct {
