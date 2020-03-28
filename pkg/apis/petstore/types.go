@@ -22,7 +22,7 @@ type Pet struct {
 	// name is the name of a Topping object .
 	Name string
 	// quantity is the number of how often the topping is put onto the pizza.
-	Quantity int64
+	Count int64
 }
 
 type PetStoreStatus struct {

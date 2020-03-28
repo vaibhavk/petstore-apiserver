@@ -21,8 +21,8 @@ func addConversionFuncs(scheme *runtime.Scheme) error {
 func Convert_v1alpha1_PetStoreSpec_To_petstore_PetStoreSpec(in *PetStoreSpec, out *petstore.PetStoreSpec, s conversion.Scope) error {
 	for _, top := range in.PetList {
 		out.PetList = append(out.PetList, petstore.Pet{
-			Name:     top.Name,
-			Quantity: top.Count,
+			Name:  top.Name,
+			Count: top.Count,
 		})
 	}
 	return nil
@@ -32,7 +32,7 @@ func Convert_petstore_PetStoreSpec_To_v1alpha1_PetStoreSpec(in *petstore.PetStor
 	for _, top := range in.PetList {
 		out.PetList = append(out.PetList, Pet{
 			Name:  top.Name,
-			Count: top.Quantity,
+			Count: top.Count,
 		})
 	}
 	return nil

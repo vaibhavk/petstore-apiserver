@@ -22,8 +22,8 @@ func ValidatePetStoreSpec(s *petstore.PetStoreSpec, fldPath *field.Path) field.E
 		allErrs = append(allErrs, field.Required(fldPath.Child("petlists"), "cannot be empty"))
 	}
 	for i := range s.PetList {
-		if s.PetList[i].Quantity <= 0 {
-			allErrs = append(allErrs, field.Invalid(fldPath.Child("petlists").Index(i).Child("quantity"), s.PetList[i].Quantity, "cannot be negative or zero"))
+		if s.PetList[i].Count <= 0 {
+			allErrs = append(allErrs, field.Invalid(fldPath.Child("petlists").Index(i).Child("count"), s.PetList[i].Count, "cannot be negative or zero"))
 		}
 	}
 
